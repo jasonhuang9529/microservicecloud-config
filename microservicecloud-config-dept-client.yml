@@ -1,0 +1,100 @@
+spring:
+  profiles:
+  active:
+  - dev
+
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/cloudDB01
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml  # mapper.xml 文件位置
+  type-aliases-package: cn.jason.springcloud.entites    # 实体扫描的别（别名），多个包使用逗号或者分号隔开
+  global-config:  # 全局配置
+    id-type: 0  # 主键类型 0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    db-column-underline: true  # 驼峰下划线转换
+    table-prefix: tbl_    # 表前缀
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true  #访问路径可以显示IP地址
+
+info:
+  app.name: jason-microservicecloud-springcloudconfig01
+  company.name: www.jason.huang.cn
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+
+---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/cloudDB01
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml  # mapper.xml 文件位置
+  type-aliases-package: cn.jason.springcloud.entites    # 实体扫描的别（别名），多个包使用逗号或者分号隔开
+  global-config:  # 全局配置
+    id-type: 0  # 主键类型 0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    db-column-underline: true  # 驼峰下划线转换
+    table-prefix: tbl_    # 表前缀
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true  #访问路径可以显示IP地址
+
+info:
+  app.name: jason-microservicecloud-springcloudconfig02
+  company.name: www.jason.huang.cn
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
