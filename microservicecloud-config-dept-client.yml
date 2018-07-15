@@ -60,7 +60,7 @@ spring:
     name: microservicecloud-config-dept-client
 
   datasource:
-    url: jdbc:mysql://localhost:3307/cloudDB01
+    url: jdbc:mysql://localhost:3307/cloudDB02
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
